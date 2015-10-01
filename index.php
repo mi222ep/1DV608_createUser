@@ -30,4 +30,3 @@ $c->doControl();
 $dtv = new \view\DateTimeView();
 $lv = new \view\LayoutView();
 $lv->render($m->isLoggedIn($v->getUserClient()), $v, $dtv);
-

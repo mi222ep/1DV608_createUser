@@ -5,6 +5,7 @@
   */
 require_once("Settings.php.default");
 require_once("controller/LoginController.php");
+require_once("controller/MasterController.php");
 require_once("view/DateTimeView.php");
 require_once("view/LayoutView.php");
 
@@ -23,6 +24,8 @@ $c = new \controller\LoginController($m, $v);
 
 
 //Controller must be run first since state is changed
+$mc= new \controller\MasterController();
+$mc->HandleInput();
 $c->doControl();
 
 

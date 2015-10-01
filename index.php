@@ -24,12 +24,11 @@ $c = new \controller\LoginController($m, $v);
 
 
 //Controller must be run first since state is changed
-
+$c->doControl();
 
 //Generate output
 $dtv = new \view\DateTimeView();
 $lv = new \view\LayoutView();
 $mc= new \controller\MasterController($v, $dtv);
 $mc->HandleInput();
-$c->doControl();
 //$lv->render($m->isLoggedIn($v->getUserClient()), $v, $dtv);

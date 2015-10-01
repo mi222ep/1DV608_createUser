@@ -5,6 +5,7 @@ use view\LayoutView;
 
 require_once("view/NavigationView.php");
 require_once("view/LayoutView.php");
+require_once("controller/LoginController.php");
 
 class MasterController{
 
@@ -21,7 +22,8 @@ class MasterController{
         if($this->navigationView->isNewUserSet()){
         }
         else{
-            $this->layoutView->render(false, $this->model, $this->view, $this->navigationView);
+            //$LoginContoller->doControl();
+            $this->layoutView->newRender(false, $this->model, $this->view, $this->navigationView);
         }
     }
     //If new user, load new user view

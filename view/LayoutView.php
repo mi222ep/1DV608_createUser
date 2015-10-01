@@ -6,7 +6,39 @@
 namespace view;
 
 class LayoutView {
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view) {
+  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Login Example</title>
+    </head>
+    <body>
+    <h1>Assignment 4</h1>
+    <?php
+    if ($isLoggedIn) {
+      echo "<h2>Logged in</h2>";
+    } else {
+      echo "<h2>Not logged in</h2>";
+    }
+    ?>
+    <div class="container" >
+      <?php
+      echo $v->response();
+
+      $dtv->show();
+      ?>
+    </div>
+
+    <div>
+      <em>This site uses cookies to improve user experience. By continuing to browse the site you are agreeing to our use of cookies.</em>
+    </div>
+    </body>
+    </html>
+    <?php
+  }
+  public function newRender($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,16 +49,16 @@ class LayoutView {
   <body>
     <h1>Assignment 4</h1>
     <?php
-    $link = $view->makeLink("Create new user.");
-    echo $link;
       if ($isLoggedIn) {
         echo "<h2>Logged in</h2>";
       } else {
-        echo "<h2>Not logged in</h2>";
+      $link = $view->makeLink("Register a new user");
+      echo $link;
+       echo "<h2>Not logged in</h2>";
     }
   ?>
     <div class="container" >
-      <?php 
+      <?php
         echo $v->response();
 
         $dtv->show();

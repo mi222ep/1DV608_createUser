@@ -6,7 +6,7 @@
 namespace view;
 
 class LayoutView {
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +15,10 @@ class LayoutView {
     <title>Login Example</title>
   </head>
   <body>
-    <h1>Assignment 2</h1>
-    <?php 
+    <h1>Assignment 4</h1>
+    <?php
+    $link = $view->makeLink("Create new user.");
+    echo $link;
       if ($isLoggedIn) {
         echo "<h2>Logged in</h2>";
       } else {

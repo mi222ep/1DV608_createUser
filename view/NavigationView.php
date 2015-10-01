@@ -6,4 +6,7 @@ class NavigationView{
     public function isNewUserSet(){
         return ISSET($_GET[self::$newUserURL]);
     }
+    public function makeLink($text){
+        return "<a href='?". self::$newUserURL."'>$text</a>";
+    }
 }

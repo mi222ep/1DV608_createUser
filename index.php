@@ -16,9 +16,6 @@ if (Settings::DISPLAY_ERRORS) {
 //session must be started before LoginModel is created
 session_start();
 
-//Controller must be run first since state is changed
-
-//Generate output
+//Create master controller and Handle Input
 $mc= new \controller\MasterController();
 $mc->HandleInput();
-//$lv->render($m->isLoggedIn($v->getUserClient()), $v, $dtv);

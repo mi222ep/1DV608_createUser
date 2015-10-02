@@ -11,6 +11,7 @@ class MasterController{
     private $loginModel;
     private $loginView;
     private $loginController;
+    private $navigationView;
 
     function __construct() {
         //Dependency injection
@@ -23,13 +24,12 @@ class MasterController{
     }
     public function HandleInput(){
         if($this->navigationView->isNewUserSet()){
-            //Post registration form
+            $returnLink = $this->navigationView->getReturnLink();
+            echo $returnLink;
         }
         else{
             $this->loginController->doControl();
-            $this->layoutView->newRender(false, $this->loginView, $this->dateTimeView, $this->navigationView);
+            $this->layoutView->render($this->loginModel->isLoggedIn($this->loginView->getUserClient()), $this->loginView, $this->dateTimeView, $this->navigationView);
         }
     }
-    //If new user, load new user view
-    //else, load Loginview
 }

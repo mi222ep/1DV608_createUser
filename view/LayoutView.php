@@ -6,7 +6,7 @@
 namespace view;
 
 class LayoutView {
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+  public function oldRender($isLoggedIn, LoginView $v, DateTimeView $dtv) {
     ?>
     <!DOCTYPE html>
     <html>
@@ -38,7 +38,7 @@ class LayoutView {
     </html>
     <?php
   }
-  public function newRender($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view) {
+  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view) {
 ?>
 <!DOCTYPE html>
 <html>

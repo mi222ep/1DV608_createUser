@@ -1,7 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mateus
- * Date: 2015-10-02
- * Time: 16:07
- */
+namespace view;
+class RegistrationView{
+    public function render(){
+
+    }
+}

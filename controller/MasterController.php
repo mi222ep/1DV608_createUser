@@ -24,12 +24,12 @@ class MasterController{
     }
     public function HandleInput(){
         if($this->navigationView->isNewUserSet()){
-            $returnLink = $this->navigationView->getReturnLink();
-            echo $returnLink;
+            //Registration controller, doControl
         }
         else{
             $this->loginController->doControl();
-            $this->layoutView->render($this->loginModel->isLoggedIn($this->loginView->getUserClient()), $this->loginView, $this->dateTimeView, $this->navigationView);
         }
+        $this->layoutView->render($this->loginModel->isLoggedIn($this->loginView->getUserClient()), $this->loginView, $this->dateTimeView, $this->navigationView);
+
     }
 }

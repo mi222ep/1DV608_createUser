@@ -6,7 +6,7 @@
 namespace view;
 
 class LayoutView {
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view) {
+  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv, NavigationView $view, RegistrationView $rv) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,12 @@ class LayoutView {
       if ($isLoggedIn) {
         echo "<h2>Logged in</h2>";
       } else {
-      $link = $view->makeLink("Register a new user");
+        if($view->isNewUserSet()){
+          $link = $view->getReturnLink();
+        }
+        else{
+          $link = $view->makeLink("Register a new user");
+        }
       echo $link;
        echo "<h2>Not logged in</h2>";
     }
@@ -28,8 +33,7 @@ class LayoutView {
     <div class="container" >
       <?php
       if($view->isNewUserSet()){
-        echo "new user";
-        //Registrationview -> response()
+        echo $rv->response();
       }
       else{
         echo $v->response();

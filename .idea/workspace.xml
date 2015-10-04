@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="789f7e9d-d5cc-4edf-a247-121cd14233c5" name="Default" comment="Registration fail messages">
+    <list default="true" id="789f7e9d-d5cc-4edf-a247-121cd14233c5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/MasterController.php" afterPath="$PROJECT_DIR$/controller/MasterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/RegisterController.php" afterPath="$PROJECT_DIR$/controller/RegisterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/RegistrationView.php" afterPath="$PROJECT_DIR$/view/RegistrationView.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="1DV608_assignment4.iws" />
@@ -37,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MasterController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/MasterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.548388">
-              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.1823461">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -67,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegistrationView.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegistrationView.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/RegistrationView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5143885">
+            <state vertical-scroll-proportion="-9.225806">
               <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
               <folding>
                 <marker date="1443967673374" expanded="true" signature="1045:1783" placeholder="..." />
@@ -125,9 +123,9 @@
         <option value="$PROJECT_DIR$/view/NavigationView.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/view/LayoutView.php" />
-        <option value="$PROJECT_DIR$/controller/MasterController.php" />
         <option value="$PROJECT_DIR$/controller/RegisterController.php" />
         <option value="$PROJECT_DIR$/view/RegistrationView.php" />
+        <option value="$PROJECT_DIR$/controller/MasterController.php" />
       </list>
     </option>
   </component>
@@ -337,7 +335,13 @@
       <option name="project" value="LOCAL" />
       <updated>1443888058124</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Registration fail messages">
+      <created>1443967951823</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1443967951823</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -346,7 +350,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24712643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -651,14 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/MasterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.548388">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.806452">
@@ -669,12 +665,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/view/RegistrationView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5143885">
+        <state vertical-scroll-proportion="-9.225806">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
             <marker date="1443967673374" expanded="true" signature="1045:1783" placeholder="..." />
             <marker date="1443967673374" expanded="true" signature="1061:1772" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/MasterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1823461">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

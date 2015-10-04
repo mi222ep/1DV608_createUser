@@ -1,12 +1,12 @@
 <?php
 namespace controller;
 
-require_once("view/NavigationView.php");
-require_once("view/LayoutView.php");
-require_once("view/DateTimeView.php");
-require_once("controller/LoginController.php");
-require_once("controller/RegisterController.php");
-require_once("view/RegistrationView.php");
+require_once("../view/NavigationView.php");
+require_once("../view/LayoutView.php");
+require_once("../view/DateTimeView.php");
+require_once("../controller/LoginController.php");
+require_once("../controller/RegisterController.php");
+require_once("../view/RegistrationView.php");
 
 class MasterController{
 

@@ -15,7 +15,7 @@ class RegistrationView{
     private function doRegistrationForm(){
         $message = "";
         if($this->registrationFail){
-            if($_POST[self::$username] == null){
+            if($_POST[self::$username] == null || $this->userNameIsTooShort()){
                 $message .= "Username has too few characters, at least 3 characters.";
             }
             if($_POST[self::$password] == null){
@@ -50,5 +50,15 @@ class RegistrationView{
     }
     public function setRegistrationFail(){
         $this->registrationFail = true;
+    }
+    public function userNameIsTooShort(){
+        $userName = $_POST[self::$username];
+        if(mb_strlen($userName)<3){
+            return true;
+        }
+        return false;
+    }
+    public function userNameGotInvalidCharacters(){
+        return false;
     }
 }

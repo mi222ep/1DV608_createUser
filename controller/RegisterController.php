@@ -8,6 +8,8 @@ class RegisterController{
         $this->view =  $view;
     }
     public function doRegistration(){
-
+        if($this->view->userWantsToRegister()){
+            $this->view->setRegistrationFail();
+        }
     }
 }

@@ -5,6 +5,7 @@ require_once("view/NavigationView.php");
 require_once("view/LayoutView.php");
 require_once("view/DateTimeView.php");
 require_once("controller/LoginController.php");
+require_once("controller/RegisterController.php");
 require_once("view/RegistrationView.php");
 
 class MasterController{
@@ -14,6 +15,7 @@ class MasterController{
     private $loginController;
     private $navigationView;
     private $registrationView;
+    private $registrationController;
 
     function __construct() {
         //Dependency injection
@@ -24,10 +26,11 @@ class MasterController{
         $this->layoutView = new \view\LayoutView();
         $this->navigationView = new \view\NavigationView();
         $this->registrationView = new \view\RegistrationView();
+        $this->registrationController = new \controller\RegisterController($this->registrationView);
     }
     public function HandleInput(){
         if($this->navigationView->isNewUserSet()){
-            //Registration controller, doControl
+            $this->registrationController->doRegistration();
         }
         else{
             $this->loginController->doControl();

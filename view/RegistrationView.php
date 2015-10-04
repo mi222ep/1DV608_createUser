@@ -5,14 +5,24 @@ class RegistrationView{
     private static $username = "RegisterView::UserName";
     private static $password = "RegisterView::Password";
     private static $passwordRepeat = "RegisterView::PasswordRepeat";
-    private static $submitForm = "RegisterView::SubmitForm";
+    private static $submitForm = "RegisterView::Register";
+
+    private $registrationFail = false;
 
     public function response() {
         return $this->doRegistrationForm();
     }
     private function doRegistrationForm(){
         $message = "";
-        //Change message depending on typed fields
+        if($this->registrationFail){
+            if($_POST[self::$username] == null){
+                $message .= "Username has too few characters, at least 3 characters.";
+            }
+            if($_POST[self::$password] == null){
+                $message .= "Password has too few characters, at least 6 characters.";
+            }
+        }
+
         return $this->generateRegistrationFormHTML($message);
     }
     private function generateRegistrationFormHTML($message){
@@ -34,5 +44,11 @@ class RegistrationView{
 }
     public function getRequestUserName(){
         return "";
+    }
+    public function userWantsToRegister(){
+        return isset($_POST[self::$submitForm]);
+    }
+    public function setRegistrationFail(){
+        $this->registrationFail = true;
     }
 }

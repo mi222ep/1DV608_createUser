@@ -25,6 +25,9 @@ class RegistrationView{
                 if($this->passwordsAreDifferent()){
                     $message .= "Passwords do not match.";
                 }
+                elseif($this->illegalCharactersInUsername()){
+                    $message .= "Username contains invalid characters.";
+                }
             }
         }
 
@@ -49,7 +52,7 @@ class RegistrationView{
 }
     private function getRequestUserName() {
         if (isset($_POST[self::$username]))
-            return trim($_POST[self::$username]);
+            return strip_tags($_POST[self::$username]);
         return "";
     }
     public function userWantsToRegister(){
@@ -77,5 +80,8 @@ class RegistrationView{
     }
     public function passwordsAreDifferent(){
          return $_POST[self::$password] != $_POST[self::$passwordRepeat];
+    }
+    private function illegalCharactersInUsername(){
+        return $_POST[self::$username] != $this->getRequestUserName();
     }
 }

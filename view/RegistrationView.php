@@ -18,8 +18,13 @@ class RegistrationView{
             if($_POST[self::$username] == null || $this->userNameIsTooShort()){
                 $message .= "Username has too few characters, at least 3 characters.";
             }
-            if($_POST[self::$password] == null){
+            if($_POST[self::$password] == null || $this->passwordIsTooShort()){
                 $message .= "Password has too few characters, at least 6 characters.";
+            }
+            else{
+                if($this->passwordsAreDifferent()){
+                    $message .= "Passwords do not match.";
+                }
             }
         }
 
@@ -42,7 +47,9 @@ class RegistrationView{
 			</form>
 		";
 }
-    public function getRequestUserName(){
+    private function getRequestUserName() {
+        if (isset($_POST[self::$username]))
+            return trim($_POST[self::$username]);
         return "";
     }
     public function userWantsToRegister(){
@@ -58,7 +65,17 @@ class RegistrationView{
         }
         return false;
     }
+    public function passwordIsTooShort(){
+        $password = $_POST[self::$password];
+        if(mb_strlen($password)<6){
+            return true;
+        }
+        return false;
+    }
     public function userNameGotInvalidCharacters(){
         return false;
+    }
+    public function passwordsAreDifferent(){
+         return $_POST[self::$password] != $_POST[self::$passwordRepeat];
     }
 }

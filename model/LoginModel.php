@@ -64,6 +64,8 @@ class LoginModel {
 		
 		$this->tempCredentials = $this->tempDAL->load($uc->getName());
 
+		//TODO: Read from DB instead of settings file
+
 		$loginByUsernameAndPassword = \Settings::USERNAME === $uc->getName() && \Settings::PASSWORD === $uc->getPassword();
 		$loginByTemporaryCredentials = $this->tempCredentials != null && $this->tempCredentials->isValid($uc->getTempPassword());
 

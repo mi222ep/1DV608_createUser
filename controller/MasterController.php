@@ -18,7 +18,11 @@ class MasterController{
     private $registrationController;
 
     function __construct() {
-        //Dependency injection
+        $this->mysqli = new \mysqli("localhost", "test", "123456", "users");
+        if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        }
         $this->loginModel = new \model\LoginModel();
         $this->loginView = new \view\LoginView($this->loginModel);
         $this->loginController = new \controller\LoginController($this->loginModel, $this->loginView);

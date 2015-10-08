@@ -63,9 +63,10 @@ class LoginModel {
 	public function doLogin(UserCredentials $uc) {
 		
 		$this->tempCredentials = $this->tempDAL->load($uc->getName());
-
 		//TODO: Read from DB instead of settings file
+		if($this->isUserInDB($uc->getName())){
 
+		}
 		$loginByUsernameAndPassword = \Settings::USERNAME === $uc->getName() && \Settings::PASSWORD === $uc->getPassword();
 		$loginByTemporaryCredentials = $this->tempCredentials != null && $this->tempCredentials->isValid($uc->getTempPassword());
 
@@ -101,6 +102,10 @@ class LoginModel {
 			$this->tempCredentials = new TempCredentials($user);
 			$this->tempDAL->save($user, $this->tempCredentials);
 		}
+	}
+	private function isUserInDB($username){
+		//TODO: Return if user is in DB or false
+		true;
 	}
 	
 }

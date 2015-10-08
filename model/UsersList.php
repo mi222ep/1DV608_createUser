@@ -24,4 +24,12 @@ public function add($username) {
     public function getPassword($username){
         return $this->usersDAL->getUserPassword($username);
     }
+    public function isUserExistInDB($otherUser){
+        foreach ($this->users as $user){
+            if($user == $otherUser){
+                return true;
+            }
+        }
+        return false;
+    }
 }

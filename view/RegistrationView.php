@@ -8,7 +8,11 @@ class RegistrationView{
     private static $submitForm = "RegisterView::Register";
 
     private $registrationFail = false;
+    private $usersList;
 
+    public function __construct( \model\UsersList $usersList){
+        $this->usersList = $usersList;
+    }
     public function response() {
         return $this->doRegistrationForm();
     }
@@ -27,6 +31,9 @@ class RegistrationView{
                 }
                 elseif($this->illegalCharactersInUsername()){
                     $message .= "Username contains invalid characters.";
+                }
+                elseif($this->usersList->isUserExistInDB($this->getRequestUserName())){
+                    $message .="User exists, pick another username.";
                 }
             }
         }

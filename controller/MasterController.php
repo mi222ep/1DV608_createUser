@@ -16,6 +16,7 @@ class MasterController{
     private $navigationView;
     private $registrationView;
     private $registrationController;
+    private $usersList;
 
     function __construct() {
         $this->mysqli = new \mysqli("localhost", "test", "123456", "users");
@@ -23,13 +24,14 @@ class MasterController{
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
         }
+        $this->usersList = new \model\UsersList($this->mysqli);
         $this->loginModel = new \model\LoginModel($this->mysqli);
         $this->loginView = new \view\LoginView($this->loginModel);
         $this->loginController = new \controller\LoginController($this->loginModel, $this->loginView);
         $this->dateTimeView = new \view\DateTimeView();
         $this->layoutView = new \view\LayoutView();
         $this->navigationView = new \view\NavigationView();
-        $this->registrationView = new \view\RegistrationView();
+        $this->registrationView = new \view\RegistrationView($this->usersList);
         $this->registrationController = new \controller\RegisterController($this->registrationView);
     }
     public function HandleInput(){

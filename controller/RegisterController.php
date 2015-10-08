@@ -1,10 +1,11 @@
 <?php
 namespace controller;
+
 class RegisterController{
 
-        private $view;
+    private $view;
 
-        public function __construct(\view\RegistrationView $view) {
+    public function __construct(\view\RegistrationView $view) {
         $this->view =  $view;
     }
     public function doRegistration(){

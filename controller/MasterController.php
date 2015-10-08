@@ -19,6 +19,7 @@ class MasterController{
     private $usersList;
 
     function __construct() {
+        //$this->mysqli = new \mysqli('logintest-202794.mysql.binero.se', '202794_av32846', '12345qwert', '202794-logintest');
         $this->mysqli = new \mysqli("localhost", "test", "123456", "users");
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());

@@ -5,6 +5,7 @@ class usersDAL{
     $this->database = $db;
 }
 public function getUser() {
+    $users = array();
     $stmt = $this->database->prepare("SELECT username FROM users");
     if ($stmt === FALSE) {
         throw new \Exception($this->database->error);
@@ -13,9 +14,9 @@ public function getUser() {
 
     $stmt->bind_result($username);
     while ($stmt->fetch()) {
-        $this->users[] = $username;
+        $users[] = $username;
     }
-    return  $this->users;
+    return  $users;
 }
     public function getUserPassword($username){
         $temp ="";

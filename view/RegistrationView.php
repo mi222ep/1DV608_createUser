@@ -1,5 +1,7 @@
 <?php
 namespace view;
+require_once("model/RegisterCredentials.php");
+
 class RegistrationView{
     private static $message = "RegisterView::Message";
     private static $username = "RegisterView::UserName";
@@ -91,4 +93,20 @@ class RegistrationView{
     private function illegalCharactersInUsername(){
         return $_POST[self::$username] != $this->getRequestUserName();
     }
+    private function getPassword(){
+        if (isset($_POST[self::$password]))
+            return $_POST[self::$password];
+        return "";
+    }
+    private function getPasswordRepeat(){
+        if (isset($_POST[self::$passwordRepeat]))
+            return $_POST[self::$passwordRepeat];
+        return "";
+    }
+    public function getRegistrationCredentials(){
+        return new \model\RegisterCredentials($this->getRequestUserName(),
+            $this->getPassword(),
+            $this->getPasswordRepeat());
+    }
+
 }

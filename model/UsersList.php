@@ -32,4 +32,13 @@ public function add($username) {
         }
         return false;
     }
+    public function doRegistration(\model\RegisterCredentials $rc){
+        if($rc->getPassword() != $rc->getPasswordRepeat()){
+            return false;
+        }
+        elseif($this->isUserExistInDB($rc->getName())){
+            return false;
+        }
+            return $this->usersDAL->addUser($rc->getName(), $rc->getPassword());
+    }
 }

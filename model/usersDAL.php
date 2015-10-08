@@ -31,4 +31,12 @@ public function getUser() {
         }
         return $temp;
     }
+    public function addUser($username, $password){
+        $stmt = $this->database->prepare("INSERT INTO `users`(`username`, `password`) VALUES ([$username],[$password])");
+        if ($stmt === FALSE) {
+            return false;
+        }
+        $stmt->execute();
+        return true;
+    }
 }

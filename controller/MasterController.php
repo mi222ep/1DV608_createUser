@@ -38,7 +38,8 @@ class MasterController{
     public function HandleInput(){
         if($this->navigationView->isNewUserSet()){
             if($this->registrationController->doRegistration()){
-
+                $this->loginView->setNewUserCreated();
+                $this->loginView->response();
             }
         }
         else{

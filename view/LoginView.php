@@ -32,6 +32,7 @@ class LoginView {
 	private $loginHasFailed = false;
 	private $loginHasSucceeded = false;
 	private $userDidLogout = false;
+	private $newUserCreated = false;
 
 	/**
 	 * @var \model\LoginModel
@@ -107,6 +108,9 @@ class LoginView {
 	public function setUserLogout() {
 		$this->userDidLogout = true;	
 	}
+	public function setNewUserCreated(){
+		$this->newUserCreated = true;
+	}
 
 	/**
 	 * Create HTTP response
@@ -169,6 +173,9 @@ class LoginView {
 			$this->redirect($message);
 		} else if ($this->userWantsToLogin() && $this->getTempPassword() != "") {
 			$message =  "Wrong information in cookies";
+		} else if($this->newUserCreated){
+			$message = "Registered new user.";
+			$this->redirect($message);
 		} else if ($this->userWantsToLogin() && $this->getRequestUserName() == "") {
 			$message =  "Username is missing";
 		} else if ($this->userWantsToLogin() && $this->getPassword() == "") {

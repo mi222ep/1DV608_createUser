@@ -39,6 +39,12 @@ public function add($username) {
         elseif($this->isUserExistInDB($rc->getName())){
             return false;
         }
+        elseif(mb_strlen($rc->getName())<3){
+            return false;
+        }
+        elseif(mb_strlen($rc->getPassword())<6){
+            return false;
+        }
             return $this->usersDAL->addUser($rc->getName(), $rc->getPassword());
     }
 }

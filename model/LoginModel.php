@@ -64,8 +64,8 @@ class LoginModel {
 	 * @return boolean
 	 */
 	public function doLogin(UserCredentials $uc) {
+		$this->tempCredentials = $this->tempDAL->load($uc->getName());
 		$existingUser = null;
-		//$this->tempCredentials = $this->tempDAL->load($uc->getName());
 		if($this->isUserInDB($uc->getName())){
 			$existingUser = $uc->getName();
 		}

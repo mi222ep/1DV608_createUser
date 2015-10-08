@@ -11,9 +11,8 @@ class TempCredentialsDAL {
 	 * @param  String $userName [description]
 	 * @return TempCredentials           [description]
 	 */
-	//TODO: is tempcredentials worth keeping or shall it be replaced by usersDAL?
 	public function load($userName) {
-		if ( file_exists(self::getFileName($userName)) ) {
+		if (file_exists(self::getFileName($userName)) ) {
 			$fileContent = file_get_contents(self::getFileName($userName));
 			if ($fileContent !== FALSE)
 			{

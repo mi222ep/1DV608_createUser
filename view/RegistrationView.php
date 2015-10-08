@@ -21,10 +21,10 @@ class RegistrationView{
     private function doRegistrationForm(){
         $message = "";
         if($this->registrationFail){
-            if($_POST[self::$username] == null || $this->userNameIsTooShort()){
+            if($this->getRequestUserName() == null || $this->userNameIsTooShort()){
                 $message .= "Username has too few characters, at least 3 characters.";
             }
-            if($_POST[self::$password] == null || $this->passwordIsTooShort()){
+            if($this->getPassword() == null || $this->passwordIsTooShort()){
                 $message .= "Password has too few characters, at least 6 characters.";
             }
             else{

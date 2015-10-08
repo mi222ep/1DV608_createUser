@@ -15,7 +15,9 @@ class RegisterController{
             $rc = $this->view->getRegistrationCredentials();
             if($this->usersList->doRegistration($rc)){
             }
-            $this->view->setRegistrationFail();
+                $this->view->setRegistrationFail();
+                return false;
+
         }
     }
 }

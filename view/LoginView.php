@@ -191,7 +191,6 @@ class LoginView {
 		$actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 		header("Location: $actual_link");
 	}
-
 	private function getSessionMessage() {
 		if (isset($_SESSION[self::$sessionSaveLocation])) {
 			$message = $_SESSION[self::$sessionSaveLocation];

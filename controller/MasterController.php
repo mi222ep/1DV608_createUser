@@ -23,7 +23,7 @@ class MasterController{
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
         }
-        $this->loginModel = new \model\LoginModel();
+        $this->loginModel = new \model\LoginModel($this->mysqli);
         $this->loginView = new \view\LoginView($this->loginModel);
         $this->loginController = new \controller\LoginController($this->loginModel, $this->loginView);
         $this->dateTimeView = new \view\DateTimeView();

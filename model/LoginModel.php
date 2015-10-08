@@ -10,6 +10,7 @@ require_once("TempCredentials.php");
 require_once("TempCredentialsDAL.php");
 require_once("LoggedInUser.php");
 require_once("UserClient.php");
+require_once("UsersList.php");
 
 
 
@@ -25,7 +26,9 @@ class LoginModel {
 
 	private $tempDAL;
 
-	public function __construct() {
+	private $usersList;
+
+	public function __construct(\mysqli $db) {
 		self::$sessionUserLocation .= \Settings::APP_SESSION_NAME;
 
 		if (!isset($_SESSION)) {
@@ -34,7 +37,7 @@ class LoginModel {
 			assert("No session started");
 		}
 		$this->tempDAL = new TempCredentialsDAL();
-		
+		$this->usersList = new UsersList($db);
 	}
 
 	/**
@@ -61,13 +64,12 @@ class LoginModel {
 	 * @return boolean
 	 */
 	public function doLogin(UserCredentials $uc) {
-		
-		$this->tempCredentials = $this->tempDAL->load($uc->getName());
-		//TODO: Read from DB instead of settings file
+		$existingUser = null;
+		//$this->tempCredentials = $this->tempDAL->load($uc->getName());
 		if($this->isUserInDB($uc->getName())){
-
+			$existingUser = $uc->getName();
 		}
-		$loginByUsernameAndPassword = \Settings::USERNAME === $uc->getName() && \Settings::PASSWORD === $uc->getPassword();
+		$loginByUsernameAndPassword = $existingUser === $uc->getName() && $this->usersList->getPassword($existingUser) === $uc->getPassword();
 		$loginByTemporaryCredentials = $this->tempCredentials != null && $this->tempCredentials->isValid($uc->getTempPassword());
 
 		if ( $loginByUsernameAndPassword || $loginByTemporaryCredentials) {
@@ -104,8 +106,13 @@ class LoginModel {
 		}
 	}
 	private function isUserInDB($username){
-		//TODO: Return if user is in DB or false
-		true;
+		$temp = $this->usersList->getAllUsers();
+		foreach($temp as $user){
+			if($user==$username){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

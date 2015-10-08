@@ -1,7 +1,6 @@
 <?php
 namespace model;
 class usersDAL{
-    private $username;
     public function __construct(\mysqli $db){
     $this->database = $db;
 }
@@ -14,17 +13,21 @@ public function getUser() {
 
     $stmt->bind_result($username);
     while ($stmt->fetch()) {
-        $this->username=$username;
+        $this->users[] = $username;
     }
-    return  $this->username;
+    return  $this->users;
 }
     public function getUserPassword($username){
-        $stmt = $this->database->prepare("select * from users where username =$username");
+        $temp ="";
+        $stmt = $this->database->prepare("select password from users where username ='$username'");
         if ($stmt === FALSE) {
             throw new \Exception($this->database->error);
         }
         $stmt->execute();
         $stmt->bind_result($password);
-        return $password;
+        while ($stmt->fetch()) {
+            $temp = $password;
+        }
+        return $temp;
     }
 }

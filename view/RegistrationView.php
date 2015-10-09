@@ -59,7 +59,7 @@ class RegistrationView{
 			</form>
 		";
 }
-    private function getRequestUserName() {
+    public function getRequestUserName() {
         if (isset($_POST[self::$username]))
             return strip_tags($_POST[self::$username]);
         return "";

@@ -240,7 +240,7 @@ class LoginView {
 					<legend>Login - enter Username and password</legend>
 					<p id='".self::$messageId."'>$message</p>
 					<label for='".self::$name."'>Username :</label>
-					<input type='text' id='".self::$name."' name='".self::$name."' value='".$this->getRequestUserName()."'/>
+					<input type='text' id='".self::$name."' name='".self::$name."' value='".$this->getUserNameForm()."'/>
 
 					<label for='".self::$password."'>Password :</label>
 					<input type='password' id='".self::$password."' name='".self::$password."'/>
@@ -257,6 +257,18 @@ class LoginView {
 	private function getRequestUserName() {
 		if (isset($_POST[self::$name]))
 			return trim($_POST[self::$name]);
+		return "";
+	}
+	private function getUserNameForm(){
+		$returnText =  "".$this->model->getLastRegisteredUser()."";
+		if($returnText != null){
+			return $returnText;
+
+		}
+		if (isset($_POST[self::$name])){
+			return trim($_POST[self::$name]);
+		}
+
 		return "";
 	}
 

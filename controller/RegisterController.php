@@ -5,10 +5,12 @@ class RegisterController{
 
     private $view;
     private $usersList;
+    private $loginModel;
 
-    public function __construct(\view\RegistrationView $view, \model\UsersList $usersList) {
+    public function __construct(\view\RegistrationView $view, \model\UsersList $usersList, \model\LoginModel $loginModel) {
         $this->view =  $view;
         $this->usersList = $usersList;
+        $this->loginModel = $loginModel;
     }
     public function doRegistration(){
         if($this->view->userWantsToRegister()){

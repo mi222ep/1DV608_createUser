@@ -33,13 +33,15 @@ class MasterController{
         $this->layoutView = new \view\LayoutView();
         $this->navigationView = new \view\NavigationView();
         $this->registrationView = new \view\RegistrationView($this->usersList);
-        $this->registrationController = new \controller\RegisterController($this->registrationView, $this->usersList);
+        $this->registrationController = new \controller\RegisterController($this->registrationView, $this->usersList, $this->loginModel);
     }
     public function HandleInput(){
         if($this->navigationView->isNewUserSet()){
             if($this->registrationController->doRegistration()){
                 $this->loginView->setNewUserCreated();
                 $this->loginView->response();
+                $newuser = $this->registrationView->getRequestUserName();
+                $this->loginModel->setLastRegisteredUser($newuser);
             }
         }
         else{

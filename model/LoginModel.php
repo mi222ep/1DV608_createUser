@@ -28,6 +28,8 @@ class LoginModel {
 
 	private $usersList;
 
+	private static $sessionSaveNewUser = "LoginModel::newUser";
+
 	public function __construct(\mysqli $db) {
 		self::$sessionUserLocation .= \Settings::APP_SESSION_NAME;
 
@@ -104,6 +106,17 @@ class LoginModel {
 			$this->tempCredentials = new TempCredentials($user);
 			$this->tempDAL->save($user, $this->tempCredentials);
 		}
+	}
+	public function setLastRegisteredUser($newUser){
+		$_SESSION[self::$sessionSaveNewUser] = $newUser;
+	}
+	public function getLastRegisteredUser(){
+		$lastUser = null;
+		if(isset($_SESSION[self::$sessionSaveNewUser])){
+			$lastUser ="".$_SESSION[self::$sessionSaveNewUser]."";
+			unset($_SESSION[self::$sessionSaveNewUser]);
+		}
+		return $lastUser;
 	}
 	private function isUserInDB($username){
 		$temp = $this->usersList->getAllUsers();
